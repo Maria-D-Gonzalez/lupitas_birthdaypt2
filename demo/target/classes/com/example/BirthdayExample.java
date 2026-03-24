@@ -1,7 +1,6 @@
 package com.example;
 
 import java.io.*;
-import java.text.ParseException;
 import java.util.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
@@ -38,11 +37,15 @@ public class BirthdayExample {
   // students do not have to change this function
   public static void initializeMap(final String pathToFile) {
     JSONArray jsonData = readJSONArrayFile(pathToFile);
+    if (jsonData == null) {
+      System.err.println("Failed to read JSON data from: " + pathToFile);
+      return;
+    }
 
     // loop over list
     String birthday, name;
     JSONObject obj;
-    for (Integer i = 0; i < jsonData.size(); i++) {
+    for (int i = 0; i < jsonData.size(); i++) {
       // parse the object and pull out the name and birthday
       obj = (JSONObject) jsonData.get(i);
       birthday = (String) obj.get("birthday");
@@ -84,8 +87,5 @@ public class BirthdayExample {
 
     // close the scanner
     input.close();
-  }
-
-  public class java {
   }
 }
