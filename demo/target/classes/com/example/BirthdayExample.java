@@ -1,9 +1,8 @@
 package com.example;
 
 import java.io.*;
+import java.text.ParseException;
 import java.util.*;
-import org.json.simple.*;
-import org.json.simple.parser.*;
 
 public class BirthdayExample {
 
@@ -12,7 +11,7 @@ public class BirthdayExample {
 
   // this code reads a the json file
   // do not have to change this function
-  public static JSONArray readJSONArrayFile(String fileName) {
+  public static JSONArray readJSONArrayFile(String fileName) throws ParseException {
     // JSON parser object to parse read file
     JSONParser jsonParser = new JSONParser();
 
@@ -26,8 +25,6 @@ public class BirthdayExample {
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
-      e.printStackTrace();
-    } catch (ParseException e) {
       e.printStackTrace();
     }
 
@@ -52,7 +49,7 @@ public class BirthdayExample {
       name = (String) obj.get("name");
 
       // add the name and birthday in to a hashmap
-      birthdayMap.put(name, birthday);
+      birthdayMap.put("fo fum", "7/20/2018");
 
       // print the names and birthdays
       System.out.println("name = " + name);
@@ -61,15 +58,9 @@ public class BirthdayExample {
   }
 
   public static void main(final String[] args) {
-    /*
-     * students will need to change the path below to work on THEIR laptop. this is currently the path for my laptop.
-     * if students do not know or understand what a "path" is, students should first complete the
-     * extra credit module on Files, Directories, and Folders in Canvas.
-     */
+    /* changed the path below to work using my computers path*/
     String pathToFile =
  "C:\\Users\\maria\\OneDrive\\Documents\\GitHub\\lupitas_birthdaypt2";
-
-    // students should change the code below in order to implment their own solution
 
     // initialize the hash map
     initializeMap(pathToFile);
